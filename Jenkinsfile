@@ -30,7 +30,7 @@ pipeline {
                 script {
         //        withSonarQubeEnv(installationName: 'Sonarscanner', credentialsId: 'SonarCloud') {
                   // withSonarQubeEnv(credentialsId: 'sonarqube-2', installationName: 'Sonarscanner_2')
-                    withSonarQubeEnv(credentialsId: 'saa', installationName: 'sq'){
+                    withSonarQubeEnv(credentialsId: 'sonarnew', installationName: 'sonaranalysis'){
                  sh 'mvn clean package sonar:sonar'
                  }
                   timeout(time: 3, unit: 'MINUTES') {
