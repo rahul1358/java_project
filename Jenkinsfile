@@ -20,11 +20,11 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rahul1358/java_project.git']]])
             }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn clean package  -DskipTests'
-            }
-        }
+       // stage('Build') {
+        //    steps {
+         //       sh 'mvn clean package  -DskipTests'
+          //  }
+       // }
         stage('sonarqube checks') {
             steps {
                 script {
