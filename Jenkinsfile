@@ -20,11 +20,11 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rahul1358/java_project.git']]])
             }
         }
-       // stage('Build') {
-        //    steps {
-         //       sh 'mvn clean package  -DskipTests'
-          //  }
-       // }
+        stage('Build') {
+           steps {
+                sh 'mvn clean package  -DskipTests'
+           }
+        }
         stage('sonarqube checks') {
             steps {
                 script {
@@ -33,22 +33,22 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'saa', installationName: 'sq'){
                  sh 'mvn clean package sonar:sonar'
                  }
-    //                timeout(time: 3, unit: 'MINUTES') {
-    //                   def qg = waitForQualityGate()
-    //                if (qg.status != 'OK') {
-    //                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
-    //                    }
-    //            }
+                  timeout(time: 3, unit: 'MINUTES') {
+                     def qg = waitForQualityGate()
+                  if (qg.status != 'OK') {
+                     error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                }
            }
         }
    }
- //       stage('Build the Image') {
-//            steps {
-//                script {
-//                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-//                }
- //           }   
- //       }
+        stage('Build the Image') {
+            steps {
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }   
+        }
 //        stage('Deploy the image to Amazon ECR') {
 //            steps {
 //                script {
