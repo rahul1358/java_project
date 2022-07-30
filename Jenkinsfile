@@ -4,7 +4,7 @@ pipeline {
        maven 'M2_HOME'
     }
     environment {
-        registry = '660181585180.dkr.ecr.eu-west-2.amazonaws.com/imagerepo'
+        registry = '669404210120.dkr.ecr.us-east-1.amazonaws.com/imgrepo'
         resistryCredentials = 'jenkins-ecr-login-credentials'
         dockerImage = ''
     }
@@ -49,7 +49,7 @@ pipeline {
                 }
             }   
         }
-//        stage('Deploy the image to Amazon ECR') {
+//       stage('Deploy the image to Amazon ECR') {
 //            steps {
 //                script {
 //                docker.withRegistry("http://" + registry, "ecr:eu-west-2:" + resistryCredentials) {
