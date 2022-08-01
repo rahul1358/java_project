@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         registry = '669404210120.dkr.ecr.us-east-1.amazonaws.com/imgrepo'
-        resistryCredentials = 'jenkins-ecr-login-credentials'
+        resistryCredentials = 'ecr-login'
         dockerImage = ''
     }
     stages {
@@ -49,15 +49,15 @@ pipeline {
                 }
             }   
         }
-//       stage('Deploy the image to Amazon ECR') {
-//            steps {
-//                script {
-//                docker.withRegistry("http://" + registry, "ecr:eu-west-2:" + resistryCredentials) {
-//                dockerImage.push()
- //         }
-//        }
-//      }
-//    }
+      stage('Deploy the image to Amazon ECR') {
+            steps {
+                script {
+                docker.withRegistry("http://" + registry, "ecr:us-east-1:" + resistryCredentials) {
+                dockerImage.push()
+         }
+        }
+      }
+    }
   }
    post { 
    success { 
