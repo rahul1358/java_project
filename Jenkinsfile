@@ -64,7 +64,7 @@ pipeline {
           mail bcc: '', body: 'Pipeline Build is Successfully Executed', cc:'', from: 'kalakotarahul@gmail.com', replyTo: 'rahulroy1358@gmail.com', subject: ' The Pipeline is Success', to: 'rahulroy1358@gmail.com' 
         }
         failure {
-            mail bcc: '', body: 'Pipeline Build is Failed while Executing', cc:'', from: 'kalakotarahul@gmail.com', replyTo: 'rahulroy1358@gmail.com', subject: ' The Pipeline is Failure', to: 'devopsuser12@gmail.com'
+            mail bcc: '', body: 'Pipeline Build is Failed while Executing', cc:'', from: 'kalakotarahul@gmail.com', replyTo: 'rahulroy1358@gmail.com', subject: ' The Pipeline is Failure', to: 'rahulroy1358@gmail.com'
         }
     }
 }
